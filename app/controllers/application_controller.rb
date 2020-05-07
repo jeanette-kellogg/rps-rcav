@@ -8,45 +8,44 @@ class ApplicationController < ActionController::Base
     
     def play_rock
       moves = ["rock", "paper", "scissors"]
-      computer_move = moves.sample
-      
-      if computer_move == "rock"
-        outcome = "tied"
-      elsif computer_move == "paper"
-        outcome = "lost"
-      elsif computer_move == "scissors"
-        outcome = "won"
-        full_message = "You played rock. They played " + computer_move + ". You " + outcome + "!"
-        render({ :plain =>  full_message })
+      @comp_move = moves.sample
+
+      if @comp_move == "rock"
+        @outcome = "tied"
+      elsif @comp_move == "paper"
+        @outcome = "lost"
+      elsif @comp_move == "scissors"
+        @outcome = "won"
+      end
+      render({ :template => "game_templates/user_rock.html.erb" })  
     end
 
     def play_paper
       moves = ["rock", "paper", "scissors"]
-      computer_move = moves.sample
-      if computer_move == "paper"
-        outcome = "tied"
-      elsif computer_move == "scissors"
-        outcome = "lost"
-      elsif computer_move == "rock"
-        outcome = "won"
-        full_message = "You played rock. They played " + computer_move + ". You " + outcome + "!"
-          render({ :plain =>  full_message })
+      @comp_move = moves.sample
+
+        if @comp_move == "rock"
+          @outcome = "tied"
+        elsif @comp_move == "paper"
+          @outcome = "lost"
+        elsif @comp_move == "scissors"
+          @outcome = "won"
+        end
+        render({ :template => "game_templates/user_paper.html.erb" })  
     end
 
     def play_scissors
       moves = ["rock", "paper", "scissors"]
-      computer_move = moves.sample
-      if computer_move == "scissors"
-        outcome = "tied"
-      elsif computer_move == "rock"
-        outcome = "lost"
-      elsif computer_move == "paper"
-        outcome = "won"
+       @comp_move = moves.sample
 
-      full_message = "You played rock. They played " + computer_move + ". You " + outcome + "!"
-      render({ :plain =>  full_message })
+        if @comp_move == "rock"
+          @outcome = "tied"
+        elsif @comp_move == "paper"
+          @outcome = "lost"
+        elsif @comp_move == "scissors"
+          @outcome = "won"
+        end
+        render({ :template => "game_templates/user_scissors.html.erb" })  
     end
        
-
-
   end
